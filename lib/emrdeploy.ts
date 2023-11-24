@@ -73,7 +73,6 @@ export class MusifyreDeployment extends Stack {
           },
         ),
         commands: [
-          "cd musifyre-cdk",
           `aws codeartifact login --tool npm --domain ${emrvars.cavars.domain} --repository ${emrvars.cavars.repo}`,
           "npm update -g npm@latest",
           "npm -v",
@@ -83,7 +82,6 @@ export class MusifyreDeployment extends Stack {
           "npm install -g aws-cdk",
           "npx cdk synth",
         ],
-        primaryOutputDirectory: "musifyre-cdk/cdk.out",
       }),
       codeBuildDefaults: {
         buildEnvironment: {
@@ -144,7 +142,7 @@ export class MusifyreDeployment extends Stack {
     //Required to instantiate actual pipeline for synth
     pipeline.buildPipeline();
 
-    /*const rule: Rule = new Rule(this, "MusifyreTrigger", {
+    const rule: Rule = new Rule(this, "MusifyreTrigger", {
       eventPattern: {
         source: ["aws.codeartifact"],
         detail: {
@@ -153,6 +151,6 @@ export class MusifyreDeployment extends Stack {
         },
       },
       targets: [new events.CodePipeline(pipeline.pipeline)],
-    });*/
+    });
   }
 }

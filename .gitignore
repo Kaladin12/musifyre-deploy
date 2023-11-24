@@ -1,0 +1,10 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+# DO NOT COMMIT PACKAGE-LOCK.JSON. THIS WILL BREAK DEPLOYMENT
+package-lock.json

@@ -10,7 +10,7 @@
     "test": "jest",
     "cdk": "cdk",
     "prepare": "npm run co:login",
-    "co:login": "aws codeartifact login --tool npm --repository elian-test --domain elian --profile code_artifact_user",
+    "co:login": "aws codeartifact login --tool npm --repository elian-test --domain elian ",
     "security": "npm audit --audit-level=moderate --registry=https://registry.npmjs.org/"
   },
   "devDependencies": {

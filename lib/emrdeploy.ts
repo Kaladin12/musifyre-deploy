@@ -65,9 +65,13 @@ export class MusifyreDeployment extends Stack {
       crossAccountKeys: true,
       useChangeSets: true,
       synth: new ShellStep("Synth", {
-        input: CodePipelineSource.connection("Kaladin12/musifyre", "main", {
-          connectionArn: emrvars.repovars.connectionArn,
-        }),
+        input: CodePipelineSource.connection(
+          "Kaladin12/musifyre-deploy",
+          "main",
+          {
+            connectionArn: emrvars.repovars.connectionArn,
+          },
+        ),
         commands: [
           "cd musifyre-cdk",
           `aws codeartifact login --tool npm --domain ${emrvars.cavars.domain} --repository ${emrvars.cavars.repo}`,
